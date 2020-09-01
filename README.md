@@ -10,7 +10,7 @@
 
     ```shell
     cd app/
-    npm install    
+    npm install
     ```
 
 1.  **Build**
