@@ -108,10 +108,10 @@ export default function Home() {
       <div className="output">
         {output.map((out, key) => {
           return (
-            <div key={key} className="output_prompt">
+            <pre key={key} className="output_prompt">
               {out.orig === "user" ? promptPrefix() : null}
               {out.prompt}
-            </div>
+            </pre>
           )
         })}
       </div>
