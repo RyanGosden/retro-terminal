@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import "./styles.css"
 
@@ -15,16 +15,35 @@ export default function Home() {
   const [path, setPath] = useState("/")
   const [userType, setUserType] = useState("$")
 
+  // Refs
+  const inputRef = useRef(null);
+  const screenRef = useRef(null);
+
+
+  useEffect(() => {
+    loadFile("welcome")
+  },  []);
+
   const parseCommand = prompt => {
     // Add output
     const newOutput = [...output, ...[{ prompt: prompt, orig: "user" }]]
 
+    // Commands
     switch (prompt) {
       case "clear":
         setOutput([])
         break
-      case "menu":
-        loadFile("menu")
+      case "help":
+        loadFile("help")
+        break
+      case "about":
+        loadFile("about")
+        break
+      case "portfolio":
+        loadFile("portfolio")
+        break
+      case "welcome":
+        loadFile("welcome")
         break
       default:
         setOutput([
@@ -69,8 +88,13 @@ export default function Home() {
     }
   }
 
+  // Focus on input all the time.
+  const setFocus = () => inputRef.current.focus();
+
+  // Set Prompt state
   const handleInput = e => setPrompt(e.target.value)
 
+  // Load file to view
   const loadFile = file => {
     axios
       .get(`/static/${file}`)
@@ -104,8 +128,8 @@ export default function Home() {
   }
 
   return (
-    <div className="screen">
-      <div className="output">
+    <div className="screen" ref={screenRef}>
+      <div className="output" onClick={setFocus}>
         {output.map((out, key) => {
           return (
             <pre key={key} className="output_prompt">
@@ -120,6 +144,7 @@ export default function Home() {
         <label className="user">
           {promptPrefix()}
           <input
+            ref={inputRef}
             type="text"
             value={prompt}
             className="prompt"
