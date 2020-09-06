@@ -98,7 +98,7 @@ export default function Home() {
   // Load file to view
   const loadFile = file => {
     axios
-      .get(`/static/${file}`)
+      .get(`static/${file}`)
       .then(response => {
         const lines = response.data.split("\n")
 
