@@ -15,7 +15,6 @@ export default function Home() {
   const [path, setPath] = useState("/")
   const [userType, setUserType] = useState("$")
 
-
   // Refs
   const inputRef = useRef(null);
   const screenRef = useRef(null);
