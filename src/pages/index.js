@@ -98,9 +98,10 @@ export default function Home() {
   // Load file to view
   const loadFile = file => {
     axios
-      .get(`/static/${file}.txt`)
+      .get(`static/${file}.txt`)
       .then(response => {
         const lines = response.data.split("\n")
+
 
         const lineArray = lines.map(line => {
           return { prompt: line, orig: "system" }

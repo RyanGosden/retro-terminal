@@ -1,0 +1,17 @@
+Description:
+  Command line client for portfolio
+
+  All of this portfolio's features can be driven through the various commands below.
+
+Usage:
+  [command]
+
+Available Commands:
+  about       View about
+  portfolio   View portfolio
+  help        View help page
+  clear       Clear terminal
+  exit        Exit terminal
+
+Navigation Commands:
+  ↑   ↓       Search history
