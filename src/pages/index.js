@@ -106,6 +106,7 @@ export default function Home() {
           return { prompt: line, orig: "system" }
         })
 
+
         const concat = output.concat(lineArray)
         setOutput(concat)
       })
