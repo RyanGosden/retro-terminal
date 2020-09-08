@@ -72,11 +72,8 @@ label > span:nth-child(1),
 
 .output_prompt{
   padding: 3px 0;
+  white-space: pre-wrap;
 }
-
-
-
-
 
 @keyframes flicker {
   0% {

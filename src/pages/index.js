@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import "./styles.css"
 
+//@todo
+// code completion
+// sound
+// exit, turn off screen
+// change user
+
 export default function Home() {
   const [prompt, setPrompt] = useState("")
   const [output, setOutput] = useState([])
@@ -15,11 +21,9 @@ export default function Home() {
   const [path, setPath] = useState("/")
   const [userType, setUserType] = useState("$")
 
-
   // Refs
   const inputRef = useRef(null);
   const screenRef = useRef(null);
-
 
   useEffect(() => {
     loadFile("welcome")
@@ -31,9 +35,6 @@ export default function Home() {
 
     // Commands
     switch (prompt) {
-      case "clear":
-        setOutput([])
-        break
       case "help":
         loadFile("help")
         break
@@ -46,11 +47,27 @@ export default function Home() {
       case "welcome":
         loadFile("welcome")
         break
+      case "exit":
+        setOutput([
+          ...newOutput,
+          ...[{ prompt: "Bye! :-)" }]
+        ])
+        break
+      case "clear":
+        setOutput([])
+        break
+      case "ls":
+        setOutput([
+          ...newOutput,
+          ...[{ prompt: "Permission Denied" }],
+          ])
+        break
       default:
         setOutput([
           ...newOutput,
           ...[{ prompt: `Command '${prompt}' not found`, orig: "system" }],
         ])
+        break
     }
   }
 
@@ -102,11 +119,9 @@ export default function Home() {
       .then(response => {
         const lines = response.data.split("\n")
 
-
         const lineArray = lines.map(line => {
           return { prompt: line, orig: "system" }
         })
-
 
         const concat = output.concat(lineArray)
         setOutput(concat)

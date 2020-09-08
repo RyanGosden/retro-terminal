@@ -3,6 +3,7 @@
 <h1 align="center">Retro Terminal</h1>
 <p>Navigate portfolio using a simple retro terminal created with React. </p>
 
+Demo : https://pacific-mesa-08391.herokuapp.com/
 
 
 ## 🚀 Quick start

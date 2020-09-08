@@ -1,7 +1,7 @@
 Description:
-  Command line client for portfolio
+- Command line client for portfolio
 
-  All of this portfolio's features can be driven through the various commands below.
+- All of this portfolio's features can be driven through the various commands below.
 
 Usage:
   [command]
